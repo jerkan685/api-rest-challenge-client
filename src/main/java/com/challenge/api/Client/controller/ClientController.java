@@ -32,50 +32,46 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(path = "/api")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.PUT,RequestMethod.POST})
+@CrossOrigin(origins = "*", methods = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST })
 @Api(value = "Api challenge", description = "Manejo de datos clientes")
 public class ClientController {
-    @Autowired
-    private ClientRepository methodDb;
-    
-    @PostMapping("/creacliente")
-    @ApiOperation(value = "Crea un nuevo cliente",
-            response = DataClientResponse.class)
-    public ResponseEntity<String> saveClient(@RequestBody Cliente client) {
-     String validate = MethodShare.validCliente(client);
-     if(validate != null) {
-       return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Error faltan datos de clientes para la creacion");
-     }
-     try {
-         methodDb.save(client);
-         return ResponseEntity.status(HttpStatus.CREATED).body("Cliente "+client.getNombre()+" creado !!!!!!");
-     }catch(Exception e) {
-         return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Fallo la creacion del cliente " +  e);   
-     }
+  @Autowired
+  private ClientRepository methodDb;
+
+  @PostMapping("/creacliente")
+  @ApiOperation(value = "Crea un nuevo cliente", response = DataClientResponse.class)
+  public ResponseEntity<String> saveClient(@RequestBody Cliente client) {
+    String validate = MethodShare.validCliente(client);
+    if (validate != null) {
+      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED)
+          .body("Error faltan datos de clientes para la creacion");
     }
-    
-    @GetMapping("/listClientes")
-    @ApiOperation(value = "Obtiene informacion de los clientes y la fecha probable de su muerte",
-            response = DataClientResponse.class)
-    public List<DataClientResponse> getlistClient() throws JsonProcessingException, ParseException {
-        List<Cliente> clientes = methodDb.getClients();
-        List<DataClientResponse> response = new ArrayList<>();
-        
-        for(Cliente client : clientes ) {
-          response.add(DataClientResponse.builder().cliente(client).
-                  fechaDeath(MethodShare.dateDeathProbably(client.getFechaNacimiento(), methodDb.getPromedy())).build());
-        }
-        
-        return response;
+    try {
+      methodDb.save(client);
+      return ResponseEntity.status(HttpStatus.CREATED).body("Cliente " + client.getNombre() + " creado !!!!!!");
+    } catch (Exception e) {
+      return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Fallo la creacion del cliente " + e);
     }
-    
-    @GetMapping("/kpideclientes")
-    @ApiOperation(value = "Obtenemos la desviacion estandar y el promedio de todas las edades de los clientes",
-            response = KpideClienteResponse.class)
-    public KpideClienteResponse getInfo() throws JsonProcessingException, ParseException {
-      return KpideClienteResponse.builder().promedio(methodDb.getPromedy()).desvest(methodDb.getDesvest()).build();
+  }
+
+  @GetMapping("/listClientes")
+  @ApiOperation(value = "Obtiene informacion de los clientes y la fecha probable de su muerte", response = DataClientResponse.class)
+  public List<DataClientResponse> getlistClient() throws JsonProcessingException, ParseException {
+    List<Cliente> clientes = methodDb.getClients();
+    List<DataClientResponse> response = new ArrayList<>();
+
+    for (Cliente client : clientes) {
+      response.add(DataClientResponse.builder().cliente(client)
+          .fechaDeath(MethodShare.dateDeathProbably(client.getFechaNacimiento(), methodDb.getPromedy())).build());
     }
-    
+
+    return response;
+  }
+
+  @GetMapping("/kpideclientes")
+  @ApiOperation(value = "Obtenemos la desviacion estandar y el promedio de todas las edades de los clientes", response = KpideClienteResponse.class)
+  public KpideClienteResponse getInfo() throws JsonProcessingException, ParseException {
+    return KpideClienteResponse.builder().promedio(methodDb.getPromedy()).desvest(methodDb.getDesvest()).build();
+  }
+
 }
-
-

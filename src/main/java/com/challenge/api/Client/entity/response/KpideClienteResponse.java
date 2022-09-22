@@ -3,12 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.challenge.api.Client.entity.response;
+
 import java.io.Serializable;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
 
 /**
  *
@@ -20,7 +20,7 @@ import lombok.Setter;
 @Setter
 @Builder
 public class KpideClienteResponse implements Serializable {
-    
+
     private Integer promedio;
     private Integer desvest;
 
@@ -51,7 +51,5 @@ public class KpideClienteResponse implements Serializable {
     public void setDesvest(int desvest) {
         this.desvest = desvest;
     }
-    
-    
-    
+
 }

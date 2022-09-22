@@ -15,17 +15,16 @@ import org.springframework.data.jpa.repository.Query;
  * @author jerka
  */
 public interface ClientRepository extends JpaRepository<Cliente, Integer> {
-    
-    
+
     @Query(value = "SELECT * FROM `Cliente`", nativeQuery = true)
     List<Cliente> getClients();
-    
+
     @Query(value = "Select AVG(edad) as promedio, STDDEV(edad) as desvest from cliente", nativeQuery = true)
     KpideClienteResponse getTest();
-    
+
     @Query(value = "Select AVG(edad) as promedio from cliente", nativeQuery = true)
     int getPromedy();
-    
+
     @Query(value = "Select STDDEV(edad) as desvest from cliente", nativeQuery = true)
     int getDesvest();
 

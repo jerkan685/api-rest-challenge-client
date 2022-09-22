@@ -20,8 +20,8 @@ import javax.persistence.Temporal;
 @Entity
 @Table(name = "Cliente")
 public class Cliente implements Serializable {
-    
-     @Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
     String Nombre;
@@ -69,6 +69,5 @@ public class Cliente implements Serializable {
     public void setFechaNacimiento(Date fechaNacimiento) {
         FechaNacimiento = fechaNacimiento;
     }
-    
-    
+
 }

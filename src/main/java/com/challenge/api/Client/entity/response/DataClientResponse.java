@@ -20,8 +20,8 @@ import lombok.Setter;
 @Setter
 @Builder
 public class DataClientResponse {
-    
+
    private Cliente cliente;
    private Date fechaDeath;
-    
+
 }
