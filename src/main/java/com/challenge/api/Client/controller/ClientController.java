@@ -62,7 +62,7 @@ public class ClientController {
 
     for (Cliente client : clientes) {
       response.add(DataClientResponse.builder().cliente(client)
-          .fechaDeath(MethodShare.dateDeathProbably(client.getFechaNacimiento(), methodDb.getPromedy())).build());
+          .fechaDeath(MethodShare.dateDeathProbably(client.getEdad())).build());
     }
 
     return response;
