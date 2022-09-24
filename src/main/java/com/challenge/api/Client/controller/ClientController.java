@@ -48,7 +48,7 @@ public class ClientController {
     }
     try {
       methodDb.save(client);
-      return ResponseEntity.status(HttpStatus.CREATED).body("Cliente " + client.getNombre() + " creado !!!!!!");
+      return ResponseEntity.status(HttpStatus.CREATED).body("Cliente  " + client.getNombre() + " creado !!!!!!");
     } catch (Exception e) {
       return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body("Fallo la creacion del cliente " + e);
     }

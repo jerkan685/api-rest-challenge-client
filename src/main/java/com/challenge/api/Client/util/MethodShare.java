@@ -15,14 +15,14 @@ import static java.util.Objects.isNull;
  */
 public class MethodShare {
 
-    
     public static final double LIFE_EXPENTANCY_ARGETINA = 76.81;
+
     public static Date dateDeathProbably(int ageClient) {
-                Double yearOfLiveProbably = ( LIFE_EXPENTANCY_ARGETINA - ageClient);
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(new Date());
-		calendar.add(Calendar.YEAR, yearOfLiveProbably.intValue());
-                return calendar.getTime();
+        Double yearOfLiveProbably = (LIFE_EXPENTANCY_ARGETINA - ageClient);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        calendar.add(Calendar.YEAR, yearOfLiveProbably.intValue());
+        return calendar.getTime();
     }
 
     public static String validCliente(Cliente client) {
