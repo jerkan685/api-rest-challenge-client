@@ -15,7 +15,7 @@ import static java.util.Objects.isNull;
  */
 public class MethodShare {
 
-    public static final double LIFE_EXPENTANCY_ARGETINA = 76.81;
+    public static final double LIFE_EXPENTANCY_ARGETINA = 76.8;
 
     public static Date dateDeathProbably(int ageClient) {
         Double yearOfLiveProbably = (LIFE_EXPENTANCY_ARGETINA - ageClient);
