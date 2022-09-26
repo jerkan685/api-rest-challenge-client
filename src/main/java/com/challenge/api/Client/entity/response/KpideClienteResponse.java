@@ -21,34 +21,34 @@ import lombok.Setter;
 @Builder
 public class KpideClienteResponse implements Serializable {
 
-    private Integer promedio;
-    private Integer desvest;
+    private Float promedio;
+    private Float desvest;
 
     /**
      * @return the promedio
      */
-    public int getPromedio() {
+    public Float getPromedio() {
         return promedio;
     }
 
     /**
      * @param promedio the promedio to set
      */
-    public void setPromedio(int promedio) {
+    public void setPromedio(Float promedio) {
         this.promedio = promedio;
     }
 
     /**
      * @return the desvest
      */
-    public int getDesvest() {
+    public Float getDesvest() {
         return desvest;
     }
 
     /**
      * @param desvest the desvest to set
      */
-    public void setDesvest(int desvest) {
+    public void setDesvest(Float desvest) {
         this.desvest = desvest;
     }
 
