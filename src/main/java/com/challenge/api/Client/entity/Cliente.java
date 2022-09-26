@@ -19,18 +19,18 @@ import javax.persistence.Temporal;
  */
 @Entity
 @Table(name = "Cliente")
-public class Cliente implements Serializable{
+public class Cliente implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
-    
+
     String Nombre;
-    
+
     String Apellido;
-    
+
     Integer Edad;
-    
+
     @Temporal(javax.persistence.TemporalType.DATE)
     Date FechaNacimiento;
 

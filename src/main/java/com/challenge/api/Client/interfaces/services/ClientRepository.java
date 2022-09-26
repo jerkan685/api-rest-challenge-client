@@ -17,13 +17,11 @@ public interface ClientRepository extends JpaRepository<Cliente, Long> {
 
     @Query(value = "SELECT * FROM cliente", nativeQuery = true)
     List<Cliente> getClients();
-    
+
     @Query(value = "Select AVG(edad) as promedio from cliente", nativeQuery = true)
     Float getPromedy();
 
     @Query(value = "Select STDDEV(edad) as desvest from cliente", nativeQuery = true)
     Float getDesvest();
-    
-    
 
 }

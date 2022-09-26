@@ -47,7 +47,7 @@ public class ClientController {
           .body("Error faltan datos de clientes para la creacion");
     }
     try {
-        client.setId(0);
+      client.setId(0);
       methodDb.save(client);
       return ResponseEntity.status(HttpStatus.CREATED).body("Cliente  " + client.getNombre() + " creado !!!!!!");
     } catch (Exception e) {
